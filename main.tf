@@ -3,6 +3,16 @@ provider "azurerm"{
     features {}
 }
 
+terraform {
+    backend "azurerm" {
+        resource_group_name     = "tf_rg_blobstore"
+        storage_account_name    = "tfstoragemandalorian"
+        container_name          = "tfstate"
+        key                     = "terraform.tfstate"
+    }
+    
+}
+
 resource "azurerm_resource_group" "tf_test" {
     name = "tfmainrg"
     location = "eastus"
