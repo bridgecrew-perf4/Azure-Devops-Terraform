@@ -3,10 +3,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
+  - master
 
 resources:
-- repo: self
+  - repo: self
 
 variables:
   tag: '$(Build.BuildId)'
@@ -26,7 +26,7 @@ stages:
         repository: 'officialmandalorian/weatherapi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-        tags: |
+        tags: | 
           $(tag)
 - stage: Provision
   displayName: "Terraforming on Azure"
